@@ -18,7 +18,8 @@
           {
             "url": "https://randomuser.me/api/portraits/men/1.jpg",
             "isMain": true,
-            "description": "Profile picture"
+            "description": "Profile picture",
+            "dateAdded": "2021-03-23"
           }
         ]
     }
