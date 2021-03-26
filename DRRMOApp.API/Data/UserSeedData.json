@@ -1,0 +1,24 @@
+[
+    {
+        "UserName": "User",
+        "FirstName": "User",
+        "LastName": "User",
+        "Gender": "male",
+        "DateOfBirth": "1985-64-11",
+        "Created": "2021-03-23",
+        "LastActive": "2021-03-23",
+        "Sitio": "Purok 2",
+        "Barangay": "Poblacion",
+        "City": "Aloguinsan",
+        "Country": "Philippines",
+        "Skills": "EMS",
+        "Certificates": "NC II EMS, NC II CHS",
+        "Photos": [
+          {
+            "url": "https://randomuser.me/api/portraits/men/1.jpg",
+            "isMain": true,
+            "description": "Profile picture"
+          }
+        ]
+    }
+]
