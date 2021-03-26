@@ -45,6 +45,7 @@ namespace DRRMOApp.API.Data
                     UserName = "Admin",
                     FirstName = "Chiantine",
                     LastName = "Manigos",
+                    Designate = "Research and Planning",
                     Gender = "male",
                     DateOfBirth = new DateTime(1985,06,11),
                     Created = DateTime.Now,
