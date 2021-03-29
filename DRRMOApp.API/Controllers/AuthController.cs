@@ -40,6 +40,8 @@ namespace DRRMOApp.API.Controllers
 
             var result = await _userManager.CreateAsync(userToCreate, 
                 userForRegisterDto.Password);
+                
+            await _userManager.AddToRoleAsync(userToCreate, "Member");
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(userToCreate);
 
@@ -70,7 +72,7 @@ namespace DRRMOApp.API.Controllers
                 });
             }
 
-            return Unauthorized();
+            return Unauthorized("Username or password is incorrect");
         }
 
         private async Task<string> GenerateJwtToken(User user)

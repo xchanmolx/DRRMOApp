@@ -18,18 +18,21 @@ namespace DRRMOApp.API.Dtos
         [Required]
         public string LastName { get; set; }
 
+        [Required]
+        public string Designate { get; set; }
+
+        [Required]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
         public string Gender { get; set; }
 
         [Required]
         public DateTime DateOfBirth { get; set; }
-
-        [Required]
-        public string Skills { get; set; }
-
-        public string Certificates { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
 

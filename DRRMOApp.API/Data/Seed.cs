@@ -46,6 +46,8 @@ namespace DRRMOApp.API.Data
                     FirstName = "Chiantine",
                     LastName = "Manigos",
                     Designate = "Research and Planning",
+                    PhoneNumber = "09163609855",
+                    Email = "cmanigos@gmail.com",
                     Gender = "male",
                     DateOfBirth = new DateTime(1985,06,11),
                     Created = DateTime.Now,
