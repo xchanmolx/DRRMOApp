@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
@@ -12,7 +12,6 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  @Output() cancelRegister = new EventEmitter();
   user!: User;
   registerForm!: FormGroup;
   bsConfig!: Partial<BsDatepickerConfig>;
@@ -20,31 +19,37 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService, private alertify: AlertifyService,
               private router: Router, private fb: FormBuilder) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.bsConfig = {
-      containerClass: 'theme-red'
+      containerClass: 'theme-dark-blue'
     };
     this.createRegisterForm();
   }
 
+  // tslint:disable-next-line: typedef
   createRegisterForm() {
     // tslint:disable-next-line: deprecation
     this.registerForm = this.fb.group({
       gender: ['male'],
-      username: ['', Validators.required],
-      knownAs: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      designate: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       dateOfBirth: [null, Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
       confirmPassword: ['', Validators.required]
     }, {validator: this.passwordMatchValidator});
   }
 
+  // tslint:disable-next-line: typedef
   passwordMatchValidator(g: any) {
     return g.get('password')?.value === g.get('confirmPassword')?.value ? null : {mismatch: true};
   }
 
+  // tslint:disable-next-line: typedef
   register() {
     if (this.registerForm.valid) {
       this.user = Object.assign({}, this.registerForm.value);
@@ -60,10 +65,6 @@ export class RegisterComponent implements OnInit {
         });
       });
     }
-  }
-
-  cancel() {
-    this.cancelRegister.emit(false);
   }
 
 }

@@ -6,22 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  registerMode = false;
+  title1 = 'DRRMO';
+  title2 = 'ABTIK';
 
   constructor() { }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
-  }
-
-  // tslint:disable-next-line: typedef
-  registerToggle() {
-    this.registerMode = true;
-  }
-
-  // tslint:disable-next-line: typedef
-  cancelRegisterMode(registerMode: boolean) {
-    this.registerMode = registerMode;
   }
 
 }

@@ -6,6 +6,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import { MessagesComponent } from './messages/messages.component';
+import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
@@ -36,5 +37,6 @@ export const appRoutes: Routes = [
             { path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']} }
         ]
     },
+    { path: 'register', component: RegisterComponent },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

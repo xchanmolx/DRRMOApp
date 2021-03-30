@@ -1,18 +1,9 @@
-<div class="container mt-5">
-  <div *ngIf="!registerMode" style="text-align: center;">
-    <h1>Find your match</h1>
-    <p class="lead">Come on in to view your matches... All you need to do is sign up!</p>
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
-      <button class="btn btn-info btn-lg">Lear more</button>
-    </div>
-  </div>
-
-  <div *ngIf="registerMode" class="container">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
-      </div>
-    </div>
-  </div>
+<div class="container text-center mt-3">
+  <img src="{{'../../../../assets/alog-512.png'}}">
+  <h1 class="title1">{{title1}}</h1>
+  <small class="lead">Disaster Risk Reduction and Management Office</small>
+  <hr>
+  <img src="{{'../../../../assets/abtik-logo.png'}}">
+  <h1 class="title2">{{title2}}</h1>
+  <small class="lead">Andam Batok sa mga Trahedya Ingon man sa mga Katalagman</small>
 </div>

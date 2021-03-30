@@ -1,13 +1,18 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">Dating App</a>
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/home']">
+      <span>
+        <img src="{{'../../../../assets/abtik-logo.png'}}" alt="ABTIK Logo" class="rounded-circle">
+        <strong> ABTIK Rescue</strong>
+      </span>
+    </a>
 
       <ul *ngIf="loggedIn()" class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" aria-current="page" [routerLink]="['/members']">Matches</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['/members']">Team</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/lists']">Lists</a>
+          <a class="nav-link" [routerLink]="['/lists']">Likes</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/messages']">Messages</a>
@@ -20,7 +25,7 @@
       <div class="ml-auto">
         <div *ngIf="loggedIn()" class="dropdown" dropdown>
           <span class="mr-1">
-            <img src="{{photoUrl || '../../../../../assets/user.png'}}" alt="{{authService.currentUser.knownAs}}" class="rounded-circle">
+            <img src="{{photoUrl || '../../../../../assets/user.png'}}" alt="{{authService.currentUser.firstName}}" class="rounded-circle">
           </span>
           <a class="dropdown-toggle text-light" dropdownToggle>
             Welcome {{authService.decodedToken?.unique_name | titlecase}}
@@ -35,10 +40,11 @@
   
         <form *ngIf="!loggedIn()" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()">
           <input class="form-control me-2" type="text" name="username"
-            placeholder="Username" required [(ngModel)]="model.username" >
+            placeholder="Username" required [(ngModel)]="model.userName">
           <input class="form-control me-2 mx-2" type="password" name="password"
-            placeholder="Password" required [(ngModel)]="model.password" >
-          <button [disabled]="!loginForm.valid" class="btn btn-success" type="submit">Login</button>
+            placeholder="Password" required [(ngModel)]="model.password">
+          <button [disabled]="!loginForm.valid" class="btn btn-success mr-2" type="submit">Login</button>
+          <button class="btn btn-info" type="button" [routerLink]="['/register']">Register</button>
         </form>
       </div>
 

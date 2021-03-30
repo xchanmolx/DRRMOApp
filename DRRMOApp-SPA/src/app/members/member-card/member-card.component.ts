@@ -15,13 +15,15 @@ export class MemberCardComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService,
               private alertify: AlertifyService) {}
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
   }
 
+  // tslint:disable-next-line: typedef
   sendLike(id: number) {
     // tslint:disable-next-line: deprecation
     this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
-      this.alertify.success('You have liked: ' + this.user.knownAs);
+      this.alertify.success('You have liked: ' + this.user.firstName);
     }, error => {
       this.alertify.error(error);
     });
