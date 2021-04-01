@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
@@ -16,12 +16,18 @@ export class AuthService {
   currentUser!: User;
   photoUrl = new BehaviorSubject<string>('../../assets/user.png');
   currentPhotoUrl = this.photoUrl.asObservable();
+  invokeEvent: Subject<any> = new Subject();
 
   constructor(private http: HttpClient) { }
 
   // tslint:disable-next-line: typedef
   changeMemberPhoto(photoUrl: string) {
     this.photoUrl.next(photoUrl);
+  }
+
+  // tslint:disable-next-line: typedef
+  callMethodFocusOnFirstName() {
+    this.invokeEvent.next();
   }
 
   // tslint:disable-next-line: typedef

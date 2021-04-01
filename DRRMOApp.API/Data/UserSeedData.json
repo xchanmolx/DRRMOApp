@@ -16,6 +16,7 @@
         "Country": "Philippines",
         "Skills": "EMS",
         "Certificates": "NC II EMS, NC II CHS",
+        "Population": "all",
         "Photos": [
           {
             "url": "https://randomuser.me/api/portraits/men/1.jpg",

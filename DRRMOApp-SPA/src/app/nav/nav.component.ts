@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { RegisterComponent } from '../register/register.component';
 import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 
@@ -19,6 +20,12 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line: deprecation
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+
+  }
+
+  // tslint:disable-next-line: typedef
+  focusOnFirstName() {
+    this.authService.callMethodFocusOnFirstName();
   }
 
   // tslint:disable-next-line: typedef

@@ -1,11 +1,11 @@
 <div class="container mt-4">
   <div class="row">
-    <h1>{{user.knownAs}}'s Profile</h1>
+    <h1>{{user.firstName}}'s Profile</h1>
   </div>
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../../../assets/user.png'}}" alt="{{user.knownAs}}">
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../../../assets/user.png'}}" alt="{{user.firstName}}">
         <div class="card-body">
           <div>
             <strong>Locations:</strong>
@@ -35,20 +35,20 @@
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class="member-tabset" #memberTabs>
-          <tab heading="About {{user.knownAs}}">
+          <tab heading="About {{user.firstName}}">
             <h4>Description</h4>
-            <p>{{user.introduction}}</p>
+            <p>blank</p>
             <h4>Looking For</h4>
-            <p>{{user.lookingFor}}</p>
+            <p>blank</p>
           </tab>
           <tab heading="Interests">
             <h4>Interests</h4>
-            <p>{{user.interests}}</p>
+            <p>blank</p>
           </tab>
           <tab heading="Photos">
             <carousel>
               <slide *ngFor="let photo of user.photos" class="text-center bg-primary">
-                <img src="{{photo.url}}" alt="{{user.knownAs}}" style="width: 50%;">
+                <img src="{{photo.url}}" alt="{{user.firstName}}" style="width: 50%;">
               </slide>
             </carousel>
           </tab>

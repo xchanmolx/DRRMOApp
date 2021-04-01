@@ -57,7 +57,8 @@ namespace DRRMOApp.API.Data
                     City = "Aloguinsan",
                     Country = "Philippines",
                     Skills = "Computer Programmer, EMS, CHS, Basic ICS, Basic First Aid",
-                    Certificates = "NC II EMS, NC II CHS, Basic ICS"
+                    Certificates = "NC II EMS, NC II CHS, Basic ICS",
+                    Population = "all"
                 };
 
                 var result = userManager.CreateAsync(adminUser, "free232469").Result;

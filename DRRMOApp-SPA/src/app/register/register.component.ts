@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
@@ -11,13 +11,19 @@ import { AuthService } from '../_services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, AfterViewInit {
   user!: User;
   registerForm!: FormGroup;
   bsConfig!: Partial<BsDatepickerConfig>;
+  @ViewChild('firstNameField', { static: true }) firstNameField!: ElementRef;
 
   constructor(private authService: AuthService, private alertify: AlertifyService,
-              private router: Router, private fb: FormBuilder) { }
+              private router: Router, private fb: FormBuilder) {
+                // tslint:disable-next-line: deprecation
+                this.authService.invokeEvent.subscribe(() => {
+                  this.ngAfterViewInit();
+                });
+              }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
@@ -25,6 +31,11 @@ export class RegisterComponent implements OnInit {
       containerClass: 'theme-dark-blue'
     };
     this.createRegisterForm();
+  }
+
+  // tslint:disable-next-line: typedef
+  ngAfterViewInit() {
+    this.firstNameField.nativeElement.focus();
   }
 
   // tslint:disable-next-line: typedef

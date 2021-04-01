@@ -31,6 +31,8 @@ namespace DRRMOApp.API.Dtos
         [Required]
         public string Gender { get; set; }
 
+        public string Population { get; set; }
+
         [Required]
         public DateTime DateOfBirth { get; set; }
         public DateTime Created { get; set; }
@@ -40,6 +42,7 @@ namespace DRRMOApp.API.Dtos
         {
             Created = DateTime.Now;
             LastActive = DateTime.Now;
+            Population = "all";
         }
     }
 }

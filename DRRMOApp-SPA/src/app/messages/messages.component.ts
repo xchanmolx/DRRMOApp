@@ -19,6 +19,7 @@ export class MessagesComponent implements OnInit {
   constructor(private userService: UserService, private authService: AuthService,
               private route: ActivatedRoute, private alertify: AlertifyService) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     // tslint:disable-next-line: deprecation
     this.route.data.subscribe(data => {
@@ -27,6 +28,7 @@ export class MessagesComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   loadMessages() {
     this.userService.getMessages(this.authService.decodedToken.nameid, this.pagination.currentPage,
         // tslint:disable-next-line: deprecation
@@ -38,6 +40,7 @@ export class MessagesComponent implements OnInit {
         });
   }
 
+  // tslint:disable-next-line: typedef
   deleteMessage(id: number) {
     this.alertify.confirm('Are you sure you want to delete this message?', () => {
       this.userService.deleteMessage(id, this.authService.decodedToken.nameid)

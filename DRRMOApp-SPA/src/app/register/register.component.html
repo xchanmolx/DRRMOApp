@@ -15,14 +15,15 @@
             <input class="mr-3" type="radio" value="female" formControlName="gender">Female
           </label>
         </div>
-      
+
         <div class="form-group">
           <input type="text" 
             [ngClass]="{'is-invalid': registerForm.get('firstName')?.errors 
               && registerForm.get('firstName')?.touched}"
             class="form-control" 
             formControlName="firstName" 
-            placeholder="First Name">
+            placeholder="First Name"
+            #firstNameField>
           <div class="invalid-feedback">First name is required</div>
         </div>
       

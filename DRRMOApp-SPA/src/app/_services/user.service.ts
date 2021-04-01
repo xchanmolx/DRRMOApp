@@ -26,8 +26,7 @@ export class UserService {
     }
 
     if (userParams != null) {
-      params = params.append('minAge', userParams.minAge);
-      params = params.append('maxAge', userParams.maxAge);
+      params = params.append('population', userParams.population);
       params = params.append('gender', userParams.gender);
       params = params.append('orderBy', userParams.orderBy);
     }
@@ -56,22 +55,27 @@ export class UserService {
     return this.http.get<User>(this.baseUrl + 'users/' + id);
   }
 
+  // tslint:disable-next-line: typedef
   updateUser(id: number, user: User) {
     return this.http.put(this.baseUrl + 'users/' + id, user);
   }
 
+  // tslint:disable-next-line: typedef
   setMainPhoto(userId: number, id: number) {
     return this.http.post(this.baseUrl + 'users/' + userId + '/photos/' + id + '/setMain', {});
   }
 
+  // tslint:disable-next-line: typedef
   deletePhoto(userId: number, id: number) {
     return this.http.delete(this.baseUrl + 'users/' + userId + '/photos/' + id);
   }
 
+  // tslint:disable-next-line: typedef
   sendLike(id: number, recipientId: number) {
     return this.http.post(this.baseUrl + 'users/' + id + '/like/' + recipientId, {});
   }
 
+  // tslint:disable-next-line: typedef
   getMessages(id: number, page?: any, itemsPerPage?: any, messageContainer?: any) {
     const paginatedResult: PaginatedResult<Message[]> = new PaginatedResult<Message[]>();
 
@@ -97,18 +101,22 @@ export class UserService {
       );
   }
 
+  // tslint:disable-next-line: typedef
   getMessageThread(id: number, recipientId: number) {
     return this.http.get<Message[]>(this.baseUrl + 'users/' + id + '/messages/thread/' + recipientId);
   }
 
+  // tslint:disable-next-line: typedef
   sendMessage(id: number, message: Message) {
     return this.http.post(this.baseUrl + 'users/' + id + '/messages', message);
   }
 
+  // tslint:disable-next-line: typedef
   deleteMessage(id: number, userId: number) {
     return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + id, {});
   }
 
+  // tslint:disable-next-line: typedef
   markAsRead(userId: number, messageId: number) {
     return this.http.post(this.baseUrl + 'users/' + userId + '/messages/' + messageId + '/read', {})
       // tslint:disable-next-line: deprecation

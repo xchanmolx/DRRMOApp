@@ -14,7 +14,8 @@ import { UserService } from '../../_services/user.service';
 export class MemberListComponent implements OnInit {
   users!: User[];
   user: User = JSON.parse(localStorage.getItem('user') as any);
-  genderList = [{ value: 'male', display: 'Males' }, { value: 'female', display: 'Females'}];
+  genderList = [{ value: 'all', display: 'All' }, { value: 'male', display: 'Males' }, { value: 'female', display: 'Females'}];
+  genderModel: any;
   userParams: any = {};
   pagination!: Pagination;
 
@@ -31,10 +32,21 @@ export class MemberListComponent implements OnInit {
       this.spinner.hide();
     });
 
-    this.userParams.gender = this.user.gender === 'male' ? 'female' : 'male';
-    this.userParams.minAge = 18;
-    this.userParams.maxAge = 99;
+    this.genderChanged();
+  }
+
+  genderChanged(): void {
     this.userParams.orderBy = 'lastActive';
+    if (this.genderModel === 'male' || this.genderModel === 'female') {
+      this.userParams.gender = this.genderModel;
+      this.userParams.population = '';
+    } else {
+      this.genderModel = 'all';
+      this.userParams.population = this.user.population;
+      this.userParams.gender = '';
+    }
+
+    this.loadUsers();
   }
 
   pageChanged(event: any): void {
@@ -44,9 +56,9 @@ export class MemberListComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   resetFilters() {
-    this.userParams.gender = this.user.gender === 'male' ? 'female' : 'male';
-    this.userParams.minAge = 18;
-    this.userParams.maxAge = 99;
+    this.genderModel = 'all';
+    this.userParams.population = this.user.population;
+    this.userParams.gender = '';
     this.loadUsers();
   }
 

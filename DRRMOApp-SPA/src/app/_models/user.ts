@@ -19,6 +19,7 @@ export interface User {
     country?: string;
     skills?: string;
     certificates?: string;
+    population?: string;
     photos?: Photo[];
     roles?: string[];
 }

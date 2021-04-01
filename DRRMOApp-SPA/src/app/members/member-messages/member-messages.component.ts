@@ -18,10 +18,12 @@ export class MemberMessagesComponent implements OnInit {
   constructor(private userService: UserService, private authService: AuthService,
               private alertify: AlertifyService) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.loadMessages();
   }
 
+  // tslint:disable-next-line: typedef
   loadMessages() {
     const currentUserId = +this.authService.decodedToken.nameid;
     this.userService.getMessageThread(this.authService.decodedToken.nameid, this.recipientId)
@@ -43,6 +45,7 @@ export class MemberMessagesComponent implements OnInit {
       });
   }
 
+  // tslint:disable-next-line: typedef
   sendMessage() {
     this.newMessage.recipientId = this.recipientId;
     this.userService.sendMessage(this.authService.decodedToken.nameid, this.newMessage)

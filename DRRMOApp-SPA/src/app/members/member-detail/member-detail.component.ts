@@ -18,6 +18,7 @@ export class MemberDetailComponent implements OnInit {
   constructor(private userService: UserService, private alertify: AlertifyService,
               private route: ActivatedRoute) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     // tslint:disable-next-line: deprecation
     this.route.data.subscribe(data => {
@@ -32,6 +33,7 @@ export class MemberDetailComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
   }

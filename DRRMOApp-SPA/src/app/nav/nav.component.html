@@ -44,7 +44,7 @@
           <input class="form-control me-2 mx-2" type="password" name="password"
             placeholder="Password" required [(ngModel)]="model.password">
           <button [disabled]="!loginForm.valid" class="btn btn-success mr-2" type="submit">Login</button>
-          <button class="btn btn-info" type="button" [routerLink]="['/register']">Register</button>
+          <button class="btn btn-info" type="button" [routerLink]="['/register']" (click)="focusOnFirstName()">Register</button>
         </form>
       </div>
 

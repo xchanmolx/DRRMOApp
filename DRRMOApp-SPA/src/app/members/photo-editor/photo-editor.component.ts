@@ -22,6 +22,7 @@ export class PhotoEditorComponent implements OnInit {
   constructor(private authService: AuthService, private userService: UserService,
               private alertify: AlertifyService) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.initializeUploader();
   }
@@ -30,6 +31,7 @@ export class PhotoEditorComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
+  // tslint:disable-next-line: typedef
   initializeUploader() {
     this.uploader = new FileUploader({
       url: this.baseUrl + 'users/' + this.authService.decodedToken.nameid + '/photos',
@@ -64,6 +66,7 @@ export class PhotoEditorComponent implements OnInit {
     };
   }
 
+  // tslint:disable-next-line: typedef
   setMainPhoto(photo: Photo) {
     // tslint:disable-next-line: deprecation
     this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
@@ -79,6 +82,7 @@ export class PhotoEditorComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   deletePhoto(id: number) {
     this.alertify.confirm('Are you sure you want to delete this photo?', () => {
       // tslint:disable-next-line: deprecation

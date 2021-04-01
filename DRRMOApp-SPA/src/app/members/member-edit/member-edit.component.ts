@@ -16,6 +16,7 @@ export class MemberEditComponent implements OnInit {
   user!: User;
   photoUrl!: string;
   @HostListener('window:beforeunload', ['$event'])
+  // tslint:disable-next-line: typedef
   unloadNotification($event: any) {
     if (this.editForm.dirty) {
       $event.returnValue = true;
@@ -25,6 +26,7 @@ export class MemberEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
               private userService: UserService, private authService: AuthService) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     // tslint:disable-next-line: deprecation
     this.route.data.subscribe(data => {
@@ -34,6 +36,7 @@ export class MemberEditComponent implements OnInit {
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
+  // tslint:disable-next-line: typedef
   updateUser() {
     // tslint:disable-next-line: deprecation
     this.userService.updateUser(this.authService.decodedToken.nameid, this.user).subscribe(() => {
@@ -44,6 +47,7 @@ export class MemberEditComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   updateMainPhoto(photoUrl: string) {
     this.user.photoUrl = photoUrl;
   }

@@ -1,26 +1,14 @@
 <div class="text-center mt-3">
-  <h2>Your matches - {{pagination.totalItems}} found</h2>
+  <h2>Our team - {{pagination.totalItems}} found</h2>
 </div>
 
 <div class="container mt-3">
 
-  <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
-    <div class="form-group">
-      <label for="minAge">Age From</label>
-      <input type="number" class="form-control ml-1" style="width: 70px" id="minAge" 
-        [(ngModel)]="userParams.minAge" name="minAge">
-    </div>
-  
-    <div class="form-group px-2">
-      <label for="maxAge">Age To</label>
-      <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge" 
-        [(ngModel)]="userParams.maxAge" name="maxAge">
-    </div>
-  
+  <form class="form-inline" #form="ngForm" (ngSubmit)="genderChanged()" novalidate>
     <div class="form-group px-2">
       <label for="gender">Show: </label>
       <select class="form-control ml-1" style="width: 130px" id="gender" 
-        [(ngModel)]="userParams.gender" name="gender">
+        [(ngModel)]="genderModel" name="gender">
         <option *ngFor="let gender of genderList" [value]="gender.value">
           {{gender.display}}
         </option>
@@ -37,8 +25,8 @@
           [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="created">Newest Members</button>
       </div>
     </div>
-  
   </form>
+
   <br>
 
   <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -105,6 +106,16 @@ namespace DRRMOApp.API.Data
             var users = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
 
             users = users.Where(u => u.Id != userParams.UserId);
+
+            if (!string.IsNullOrEmpty(userParams.Population))
+            {
+                users = users.Where(p => p.Population == userParams.Population);
+            }
+            
+            if (!string.IsNullOrEmpty(userParams.Gender))
+            {
+                users = users.Where(g => g.Gender == userParams.Gender);
+            }
 
             if (userParams.Likers)
             {
