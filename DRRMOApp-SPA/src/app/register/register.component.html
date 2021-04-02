@@ -19,9 +19,9 @@
         <div class="form-group">
           <input type="text" 
             [ngClass]="{'is-invalid': registerForm.get('firstName')?.errors 
-              && registerForm.get('firstName')?.touched}"
-            class="form-control" 
-            formControlName="firstName" 
+              && registerForm.get('firstName')?.dirty}"
+            class="form-control"
+            formControlName="firstName"
             placeholder="First Name"
             #firstNameField>
           <div class="invalid-feedback">First name is required</div>
@@ -33,10 +33,16 @@
           <div class="invalid-feedback" *ngIf="registerForm.get('lastName')?.touched && registerForm.get('lastName')?.hasError('required')">Last name is required</div>
         </div>
 
-        <div class="form-group">
-          <input [ngClass]="{'is-invalid': registerForm.get('designate')?.errors && registerForm.get('designate')?.touched}" class="form-control"
-            placeholder="Designate" formControlName="designate">
-          <div class="invalid-feedback" *ngIf="registerForm.get('designate')?.touched && registerForm.get('designate')?.hasError('required')">Designate is required</div>
+        <div class="form-group px-2 form-inline">
+          <label for="designate">Select position:</label>
+          <select name="designate" id="designate" class="form-control ml-1" style="width: 230px;"
+            formControlName="designate"
+            [ngClass]="{'is-invalid': registerForm.get('designate')?.errors && registerForm.get('designate')?.touched}">
+            <option *ngFor="let designate of designateList" [value]="designate">
+              {{designate}}
+            </option>
+          </select>
+          <div class="invalid-feedback" *ngIf="registerForm.get('designate')?.touched && registerForm.get('designate')?.hasError('required')">Please select a position</div>
         </div>
 
         <div class="form-group">

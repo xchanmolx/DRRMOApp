@@ -43,21 +43,21 @@ namespace DRRMOApp.API.Data
                 var adminUser = new User 
                 {
                     UserName = "Admin",
-                    FirstName = "Chiantine",
-                    LastName = "Manigos",
-                    Designate = "Research and Planning",
+                    FirstName = "chiantine",
+                    LastName = "manigos",
+                    Designate = "research and planning",
                     PhoneNumber = "09163609855",
                     Email = "cmanigos@gmail.com",
                     Gender = "male",
                     DateOfBirth = new DateTime(1985,06,11),
                     Created = DateTime.Now,
                     LastActive = DateTime.Now,
-                    Sitio = "Purok 2",
-                    Barangay = "Poblacion",
-                    City = "Aloguinsan",
-                    Country = "Philippines",
-                    Skills = "Computer Programmer, EMS, CHS, Basic ICS, Basic First Aid",
-                    Certificates = "NC II EMS, NC II CHS, Basic ICS",
+                    Sitio = "purok 2",
+                    Barangay = "poblacion",
+                    City = "aloguinsan",
+                    Country = "philippines",
+                    Skills = "computer programmer, ems, chs, basic ics, basic first aid",
+                    Certificates = "nc ii ems, nc ii chs, basic ics",
                     Population = "all"
                 };
 

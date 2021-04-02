@@ -1,27 +1,27 @@
 [
     {
         "UserName": "User",
-        "FirstName": "User",
-        "LastName": "User",
-        "Designate": "Responder",
+        "FirstName": "user",
+        "LastName": "user",
+        "Designate": "responder",
         "PhoneNumber": "09163609855",
         "Email": "cmanigos@gmail.com",
         "Gender": "male",
         "DateOfBirth": "1985-06-11",
         "Created": "2021-03-23",
         "LastActive": "2021-03-23",
-        "Sitio": "Purok 2",
-        "Barangay": "Poblacion",
-        "City": "Aloguinsan",
-        "Country": "Philippines",
-        "Skills": "EMS",
-        "Certificates": "NC II EMS, NC II CHS",
+        "Sitio": "purok 2",
+        "Barangay": "poblacion",
+        "City": "aloguinsan",
+        "Country": "philippines",
+        "Skills": "ems",
+        "Certificates": "nc ii ems, nc ii chs",
         "Population": "all",
         "Photos": [
           {
             "url": "https://randomuser.me/api/portraits/men/1.jpg",
             "isMain": true,
-            "description": "Profile picture",
+            "description": "profile picture",
             "dateAdded": "2021-03-23"
           }
         ]

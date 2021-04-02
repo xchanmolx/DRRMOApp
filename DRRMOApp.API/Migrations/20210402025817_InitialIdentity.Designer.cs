@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DRRMOApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210401025548_UserPopulationIdentity")]
-    partial class UserPopulationIdentity
+    [Migration("20210402025817_InitialIdentity")]
+    partial class InitialIdentity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

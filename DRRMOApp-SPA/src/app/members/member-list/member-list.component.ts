@@ -37,13 +37,13 @@ export class MemberListComponent implements OnInit {
 
   genderChanged(): void {
     this.userParams.orderBy = 'lastActive';
+    this.userParams.gender = '';
+    this.userParams.population = '';
     if (this.genderModel === 'male' || this.genderModel === 'female') {
       this.userParams.gender = this.genderModel;
-      this.userParams.population = '';
     } else {
       this.genderModel = 'all';
       this.userParams.population = this.user.population;
-      this.userParams.gender = '';
     }
 
     this.loadUsers();
@@ -56,9 +56,11 @@ export class MemberListComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   resetFilters() {
+    this.userParams.orderBy = 'lastActive';
+    this.userParams.gender = '';
     this.genderModel = 'all';
     this.userParams.population = this.user.population;
-    this.userParams.gender = '';
+    this.pagination.currentPage = 1;
     this.loadUsers();
   }
 
