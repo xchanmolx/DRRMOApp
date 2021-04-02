@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       }, () => {
         // tslint:disable-next-line: deprecation
         this.authService.login(this.user).subscribe(() => {
-          this.router.navigate(['/members']);
+          this.router.navigate(['/team']);
         });
       });
     }

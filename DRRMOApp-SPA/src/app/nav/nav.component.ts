@@ -35,7 +35,7 @@ export class NavComponent implements OnInit {
     }, error => {
       this.alertify.error('Username or password is incorrect');
     }, () => {
-      this.router.navigate(['/members']);
+      this.router.navigate(['/team']);
     });
   }
 

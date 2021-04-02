@@ -27,7 +27,7 @@
       <th style="width: 20%">Sent / Received</th>
       <th style="width: 20%"></th>
     </tr>
-    <tr *ngFor="let message of messages" [routerLink]="['/members', 
+    <tr *ngFor="let message of messages" [routerLink]="['/team', 
       messageContainer == 'Outbox' ? message.recipientId : message.senderId]" 
         [queryParams]="{tab: 3}">
       <td>{{message.content}}</td>
