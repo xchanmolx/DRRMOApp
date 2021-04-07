@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { Message } from 'src/app/_models/message';
 import { AlertifyService } from 'src/app/_services/alertify.service';
@@ -14,6 +14,7 @@ export class MemberMessagesComponent implements OnInit {
   @Input() recipientId!: number;
   messages: Message[] = [];
   newMessage: any = {};
+  @ViewChild('messageField', { static: true }) messageField!: ElementRef;
 
   constructor(private userService: UserService, private authService: AuthService,
               private alertify: AlertifyService) { }
@@ -21,6 +22,11 @@ export class MemberMessagesComponent implements OnInit {
   // tslint:disable-next-line: typedef
   ngOnInit() {
     this.loadMessages();
+  }
+
+  // tslint:disable-next-line: typedef
+  focusOnMessageBox() {
+    this.messageField.nativeElement.focus();
   }
 
   // tslint:disable-next-line: typedef

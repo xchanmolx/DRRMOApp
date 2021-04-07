@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Message } from '../_models/message';
@@ -12,6 +12,7 @@ import { User } from '../_models/user';
 })
 export class UserService {
   baseUrl = environment.apiUrl;
+  invokeEvent: Subject<any> = new Subject();
 
   constructor(private http: HttpClient) { }
 

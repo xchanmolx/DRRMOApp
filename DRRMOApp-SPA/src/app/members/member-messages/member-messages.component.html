@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <div *ngIf="messages.length == 0">
-      <p>No messages yet... say hi by using the message box below</p>
+      <p>No messages yet... type your message by using the message box below</p>
     </div>
 
     <ul class="chat">
@@ -9,11 +9,11 @@
         <!-- to them -->
         <div *ngIf="message.senderId == recipientId">
           <span class="chat-img float-left">
-            <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle">
+            <img src="{{message.senderPhotoUrl || '../../../../../assets/user.png'}}" alt="{{message.senderFirstName}}" class="rounded-circle">
           </span>
           <div class="chat-body">
             <div class="header">
-              <strong class="primary-font">{{message.senderKnownAs}}</strong>
+              <strong class="primary-font">{{message.senderFirstName | titlecase}}</strong>
               <small class="text-muted float-right">
                 <span class="fa fa-clock-o">{{message.messageSent.toString() | timeAgo}}</span>
               </small>
@@ -25,7 +25,7 @@
         <!-- to me -->
         <div *ngIf="message.senderId != recipientId">
           <span class="chat-img float-right">
-            <img src="{{message.senderPhotoUrl}}" alt="{{message.senderKnownAs}}" class="rounded-circle">
+          <img src="{{message.senderPhotoUrl || '../../../../../assets/user.png'}}" alt="{{message.senderFirstName}}" class="rounded-circle">
           </span>
           <div class="chat-body">
             <div class="header">
@@ -34,7 +34,7 @@
                 <span *ngIf="!message.isRead" class="text-danger">(unread)</span>
                 <span *ngIf="message.isRead" class="text-success">(Read {{message.dateRead.toString() | timeAgo}})</span>
               </small>
-              <strong class="primary-font float-right">{{message.senderKnownAs}}</strong>
+              <strong class="primary-font float-right">{{message.senderFirstName | titlecase}}</strong>
             </div>
             <p>{{message.content}}</p>
           </div>
@@ -51,7 +51,8 @@
           name="content"
           required
           class="form-control input-sm" 
-          placeholder="send a private message">
+          placeholder="send a private message"
+          #messageField>
         <div class="input-group-append">
           <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
         </div>

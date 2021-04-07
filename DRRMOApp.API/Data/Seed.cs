@@ -52,12 +52,12 @@ namespace DRRMOApp.API.Data
                     DateOfBirth = new DateTime(1985,06,11),
                     Created = DateTime.Now,
                     LastActive = DateTime.Now,
-                    Sitio = "purok 2",
-                    Barangay = "poblacion",
+                    Sitio = "tagaytay",
+                    Barangay = "bojo",
                     City = "aloguinsan",
                     Country = "philippines",
-                    Skills = "computer programmer, ems, chs, basic ics, basic first aid",
-                    Certificates = "nc ii ems, nc ii chs, basic ics",
+                    Skills = "web developer, software developer, ems, chs, basic ics, basic first aid",
+                    Certificates = "ict, nc ii ems, nc ii chs, basic ics",
                     Population = "all"
                 };
 

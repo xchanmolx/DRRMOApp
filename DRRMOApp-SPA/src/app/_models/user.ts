@@ -9,6 +9,7 @@ export interface User {
     phoneNumber: string;
     email: string;
     gender: string;
+    dateOfBirth: Date;
     age: number;
     created: Date;
     lastActive: any;

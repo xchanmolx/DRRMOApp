@@ -5,16 +5,9 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../../../assets/user.png'}}" alt="{{user.firstName}}">
+        <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../../../assets/user.png'}}" alt="{{user.firstName}}"
+          tooltip="Date of Birth: {{user.dateOfBirth | date: 'mediumDate'}} | Age: {{user.age}}">
         <div class="card-body">
-          <div>
-            <strong>Locations:</strong>
-            <p>{{user.city}}, {{user.country}}</p>
-          </div>
-          <div>
-            <strong>Age:</strong>
-            <p>{{user.age}}</p>
-          </div>
           <div>
             <strong>Last Active:</strong>
             <p>{{user.lastActive | timeAgo}}</p>
@@ -26,8 +19,8 @@
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
-            <button class="btn btn-primary w-100">Like</button>
-            <button class="btn btn-success w-100" (click)="selectTab(3)">Message</button>
+            <button class="btn btn-primary w-100" (click)="sendLike(user.id)">Like</button>
+            <button class="btn btn-success w-100" (click)="selectTab(3)" (click)="focusOnMessageBox()">Message</button>
           </div>
         </div>
       </div>
@@ -35,17 +28,36 @@
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class="member-tabset" #memberTabs>
-          <tab heading="About {{user.firstName}}">
-            <h4>Description</h4>
-            <p>blank</p>
-            <h4>Looking For</h4>
-            <p>blank</p>
+          <tab heading="About {{user.firstName | titlecase}}">
+            <h4>Name</h4>
+            <p>{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
+            <h4>Gender</h4>
+            <p>{{user.gender | titlecase}}</p>
+            <h4>Position</h4>
+            <p>{{user.designate | titlecase}}</p>
+            <h4>Phone Number</h4>
+            <p>{{user.phoneNumber}}</p>
+            <h4>Email Address</h4>
+            <p>{{user.email}}</p>
+            <h4>Skills</h4>
+            <p>{{user.skills === null ? 'No skills yet... please input skills' : user.skills | uppercase}}</p>
+            <h4>Certificates</h4>
+            <p>{{user.certificates === null ? 'No certificates yet... please input certificates' : user.certificates | uppercase}}</p>
           </tab>
-          <tab heading="Interests">
-            <h4>Interests</h4>
-            <p>blank</p>
+          <tab heading="Locations">
+            <h4>Sitio</h4>
+            <p>{{user.sitio === null ? 'No sitio yet... please input sitio' : user.sitio | titlecase}}</p>
+            <h4>Barangay</h4>
+            <p>{{user.barangay === null ? 'No barangay yet... please input barangay' : user.barangay | titlecase}}</p>
+            <h4>City</h4>
+            <p>{{user.city === null ? 'No city yet... please input city' : user.city | titlecase}}</p>
+            <h4>Country</h4>
+            <p>{{user.country === null ? 'No country yet... please input country' : user.country | titlecase}}</p>
           </tab>
           <tab heading="Photos">
+            <div *ngIf="user.photoUrl === null">
+              <p>No photos yet... please upload photos</p>
+            </div>
             <carousel>
               <slide *ngFor="let photo of user.photos" class="text-center bg-primary">
                 <img src="{{photo.url}}" alt="{{user.firstName}}" style="width: 50%;">

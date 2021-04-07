@@ -14,6 +14,7 @@ import { TimeAgoPipe } from 'time-ago-pipe';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
@@ -92,6 +93,7 @@ export class TimeAgoExtendsPipe extends TimeAgoPipe {}
     FileUploadModule,
     NgxSpinnerModule,
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
     ButtonsModule.forRoot(),
     PaginationModule.forRoot(),
     BsDatepickerModule.forRoot(),
