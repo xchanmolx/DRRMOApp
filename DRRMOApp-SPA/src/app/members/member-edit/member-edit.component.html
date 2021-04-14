@@ -12,18 +12,11 @@
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{photoUrl || '../../../../../assets/user.png'}}" alt="{{user.firstName}}">
+        <img class="card-img-top img-thumbnail" src="{{photoUrl || '../../../../../assets/user.png'}}" alt="{{user.firstName}}" 
+          tooltip="Age: {{user.age}}">
         <div class="card-body">
           <div>
-            <strong>Locations:</strong>
-            <p>{{user.city}}, {{user.country}}</p>
-          </div>
-          <div>
-            <strong>Age:</strong>
-            <p>{{user.age}}</p>
-          </div>
-          <div>
-            <strong>Last Active:</strong>
+            <strong>Last active:</strong>
             <p>{{user.lastActive.toString() | timeAgo}}</p>
           </div>
           <div>
@@ -41,24 +34,95 @@
         <tabset class="member-tabset">
           <tab heading="Edit Profile">
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
-              <h4>Description</h4>
-              <textarea name="introduction" rows="6" class="form-control" 
-                ></textarea>
-              <h4>Looking For</h4>
-              <textarea name="lookingFor" rows="6" class="form-control" 
-                ></textarea>
-              <h4>Interests</h4>
-              <textarea name="interests" rows="6" class="form-control" 
-                ></textarea>
-              <h4>Location Details:</h4>
-              <div class="form-inline">
-                <label for="city">City</label>
-                <input type="text" name="city" class="form-control" [(ngModel)]="user.city">
-                <label for="country">Country</label>
-                <input type="text" name="country" class="form-control" [(ngModel)]="user.country">
+              <h4>Profile</h4>
+              <div class="form-row">
+                <div class="form-group mx-3">
+                  <label for="firstName">First name</label>
+                  <input type="text" name="firstName" id="firstName" class="form-control" [ngModel]="user.firstName | titlecase"
+                    (ngModelChange)="user.firstName=$event">
+                </div>
+                <div class="form-group mr-3">
+                  <label for="lastName">Last name</label>
+                  <input type="text" name="lastName" id="lastName" class="form-control" [ngModel]="user.lastName | titlecase"
+                    (ngModelChange)="user.lastName=$event">
+                </div>
+                <div class="form-group">
+                  <label for="dateOfBirth">Date of birth</label>
+                  <input type="datetime" name="dateOfBirth" id="dateOfBirth" class="form-control" [ngModel]="user.dateOfBirth | date: 'longDate'"
+                    (ngModelChange)="user.dateOfBirth=$event">
+                </div>
               </div>
+              <div class="form-row">
+                <div class="form-group mx-3">
+                  <label for="phoneNumber">Phone number</label>
+                  <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input type="email" name="email" id="email" class="form-control" [(ngModel)]="user.email">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group mx-3">
+                  <label for="designate">Position</label>
+                  <select name="designate" id="designate" class="form-control"
+                    [(ngModel)]="user.designate" >
+                    <option value="responder">Responder</option>
+                    <option value="driver">Driver</option>
+                    <option value="operations and warning">Operations and Warning</option>
+                    <option value="admin and training">Admin and Training</option>
+                    <option value="research and planning">Research and Planning</option>
+                    <option value="drrm officer">DRRM Officer</option>
+                    <option value="volunteer">Volunteer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender</label>
+                  <select name="gender" id="gender" class="form-control"
+                    [(ngModel)]="user.gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <h4>Locations</h4>
+              <div class="form-row">
+                <div class="form-group mx-3">
+                  <label for="sitio">Sitio</label>
+                  <input type="text" name="sitio" id="sitio" class="form-control" [ngModel]="user.sitio | titlecase"
+                    (ngModelChange)="user.sitio=$event">
+                </div>
+                <div class="form-group">
+                  <label for="barangay">Barangay</label>
+                  <input type="text" name="barangay" id="barangay" class="form-control" [ngModel]="user.barangay | titlecase"
+                    (ngModelChange)="user.barangay=$event">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group mx-3">
+                  <label for="city">City</label>
+                  <input type="text" name="city" id="city" class="form-control" [ngModel]="user.city | titlecase"
+                    (ngModelChange)="user.city=$event">
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <input type="text" name="country" id="country" class="form-control" [ngModel]="user.country | titlecase"
+                    (ngModelChange)="user.country=$event">
+                </div>
+              </div>
+              <h4>Skills</h4>
+              <textarea name="skills" rows="2" class="form-control mb-2" [ngModel]="user.skills | uppercase" 
+                (ngModelChange)="user.skills=$event"></textarea>
+              <h4>Certificates</h4>
+              <textarea name="certificates" rows="2" class="form-control" [ngModel]="user.certificates | uppercase"
+                (ngModelChange)="user.certificates=$event"></textarea>
             </form>
           </tab>
+
+          <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" 
+            type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Loading... 
+            </p></ngx-spinner>
+
           <tab heading="Edit Photos">
              <app-photo-editor 
               [photos]="user.photos" 

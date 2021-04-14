@@ -17,7 +17,7 @@ export class MemberMessagesComponent implements OnInit {
   @ViewChild('messageField', { static: true }) messageField!: ElementRef;
 
   constructor(private userService: UserService, private authService: AuthService,
-              private alertify: AlertifyService) { }
+              private alertify: AlertifyService) {}
 
   // tslint:disable-next-line: typedef
   ngOnInit() {

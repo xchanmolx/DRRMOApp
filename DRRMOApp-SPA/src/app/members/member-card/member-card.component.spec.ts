@@ -9,6 +9,7 @@ describe('MemberCardComponent', () => {
   let component: MemberCardComponent;
   let fixture: ComponentFixture<MemberCardComponent>;
 
+  // tslint:disable-next-line: deprecation
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MemberCardComponent ]

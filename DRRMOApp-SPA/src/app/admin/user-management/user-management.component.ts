@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { User } from 'src/app/_models/user';
 import { AdminService } from 'src/app/_services/admin.service';
@@ -10,25 +10,16 @@ import { RolesModalComponent } from '../roles-modal/roles-modal.component';
   styleUrls: ['./user-management.component.css']
 })
 export class UserManagementComponent implements OnInit {
-  users!: User[];
+  @Input() users!: User[];
   bsModalRef!: BsModalRef;
 
-  constructor(private adminService: AdminService,
-              private modalService: BsModalService) { }
+  constructor(private adminService: AdminService, private modalService: BsModalService) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
-    this.getUsersWithRoles();
   }
 
-  getUsersWithRoles() {
-    // tslint:disable-next-line: deprecation
-    this.adminService.getUsersWithRoles().subscribe((users: any) => {
-      this.users = users;
-    }, error => {
-      console.log(error);
-    });
-  }
-
+  // tslint:disable-next-line: typedef
   editRolesModal(user: User) {
     const initialState: any = {
       user,
@@ -50,6 +41,7 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   private getRolesArray(user: User) {
     const roles = [];
     const userRoles: any = user.roles;

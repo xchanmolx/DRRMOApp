@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { User } from 'src/app/_models/user';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -24,13 +25,16 @@ export class MemberEditComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
-              private userService: UserService, private authService: AuthService) { }
+              private userService: UserService, private authService: AuthService, private spinner: NgxSpinnerService) { }
+
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
+    this.spinner.show();
     // tslint:disable-next-line: deprecation
     this.route.data.subscribe(data => {
       this.user = data.user;
+      this.spinner.hide();
     });
     // tslint:disable-next-line: deprecation
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
